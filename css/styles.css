@@ -15,7 +15,7 @@
   --color-primary: #FC4C02;
   --color-primary-accent: #E34234;
   --color-primary-glow: rgba(252, 76, 2, 0.25);
-  
+
   --color-text-primary: #F5F5F5;
   --color-text-muted: #9CA3AF;
   --color-border: #333333;
@@ -55,7 +55,9 @@
 /* --------------------------------------------------------------------------
    Modern Reset & Base Styles
    -------------------------------------------------------------------------- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -83,7 +85,10 @@ a {
   text-decoration: none;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font: inherit;
   color: inherit;
 }
@@ -145,6 +150,7 @@ button {
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .nav-right {
@@ -306,7 +312,7 @@ button {
   padding: 8px var(--space-4);
   border-radius: var(--radius-sm);
   text-decoration: none;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   transition: background-color 0.15s ease, transform 0.1s ease;
 }
 
@@ -352,7 +358,7 @@ button {
 
 .goal-title-group {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: var(--space-3);
   flex-wrap: wrap;
 }
@@ -417,8 +423,8 @@ button {
 /* Circular Progress Ring */
 .progress-ring-container {
   position: relative;
-  width: 68px;
-  height: 68px;
+  width: 20vh;
+  height: 20vh;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -545,11 +551,11 @@ button {
   background-color: var(--surface-nested);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: var(--space-4);
+  padding: var(--space-3);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 .mission-header {
@@ -817,10 +823,22 @@ button {
   border-radius: 2px;
 }
 
-.intensity-0 { background-color: #121212; border: 1px solid #333333; }
-.intensity-1 { background-color: rgba(252, 76, 2, 0.35); }
-.intensity-2 { background-color: rgba(252, 76, 2, 0.7); }
-.intensity-3 { background-color: #FC4C02; }
+.intensity-0 {
+  background-color: #121212;
+  border: 1px solid #333333;
+}
+
+.intensity-1 {
+  background-color: rgba(252, 76, 2, 0.35);
+}
+
+.intensity-2 {
+  background-color: rgba(252, 76, 2, 0.7);
+}
+
+.intensity-3 {
+  background-color: #FC4C02;
+}
 
 .calendar-placeholder-container {
   overflow-x: auto;
@@ -1064,7 +1082,8 @@ button {
    -------------------------------------------------------------------------- */
 @media (min-width: 1024px) {
   .goals-grid {
-    grid-template-columns: 1fr; /* Single detailed tree layout for goal cards with missions */
+    grid-template-columns: 1fr;
+    /* Single detailed tree layout for goal cards with missions */
   }
 }
 
@@ -1094,19 +1113,16 @@ button {
     padding: var(--space-4);
   }
 
-  .goal-card-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .goal-card-body {
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: flex-start;
     gap: var(--space-4);
   }
 
   .progress-ring-container {
     align-self: center;
+    width: 30vh;
+    height: 30vh;
   }
 
   .missions-container,
@@ -1140,4 +1156,5 @@ button {
 .mock-data {
   /* Targeted mockup styling if needed */
 }
+
 /* =================================================== */

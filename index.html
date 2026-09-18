@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mr Goallie — Athletic Goal Tracking &amp; Planning</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
   <!-- Top Sticky Navigation Bar -->
@@ -18,12 +20,13 @@
       <div class="nav-right">
         <nav aria-label="Primary Navigation">
           <ul class="nav-links">
-            <li><a href="index.html" class="nav-link active" aria-current="page">Goals</a></li>
+            <li><a href="#goals-section" class="nav-link active" aria-current="page">Goals</a></li>
             <li><a href="#activity-section" class="nav-link">Activity</a></li>
           </ul>
         </nav>
         <a href="#profile" class="profile-btn" aria-label="User Profile">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
@@ -33,9 +36,9 @@
   </header>
 
   <main class="main-layout">
-    
+
     <!-- 1. Goal Collection Section -->
-    <section class="goals-section" aria-labelledby="goals-heading">
+    <section class="goals-section" id="goals-section" aria-labelledby="goals-heading">
       <div class="section-header-row">
         <div class="header-left">
           <span class="section-tag">Goal Collection</span>
@@ -56,7 +59,8 @@
           </div>
 
           <a href="goalForm.html" class="btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
@@ -72,12 +76,10 @@
         <article class="goal-card mock-data" aria-labelledby="mock-goal-title">
           <!-- Top Row: Title, Category pill, Edit pencil -->
           <div class="goal-card-header">
-            <div class="goal-title-group">
-              <h2 id="mock-goal-title" class="goal-title">Earn ₱10K This Month</h2>
-              <span class="category-pill">Finance</span>
-            </div>
+            <span class="category-pill">Finance</span>
             <a href="goalForm.html" class="icon-btn" aria-label="Edit goal 'Earn ₱10K This Month'">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
               </svg>
@@ -86,14 +88,18 @@
 
           <!-- Middle Row: Description & Circular Progress Ring (50%) -->
           <div class="goal-card-body">
-            <p class="goal-description">
-              Hit ₱10,000 in extra income this month through freelance work and side sales.
-            </p>
+            <div class="goal-title-group">
+              <h2 id="mock-goal-title" class="goal-title">Earn ₱10K This Month</h2>
+              <p class="goal-description">
+                Hit ₱10,000 in extra income this month through freelance work and side sales.
+              </p>
+            </div>
             <div class="progress-ring-container" aria-label="Goal progress: 50%">
               <svg class="progress-ring-svg" viewBox="0 0 68 68" aria-hidden="true">
                 <circle class="progress-ring-track" cx="34" cy="34" r="28"></circle>
                 <!-- Circumference = 2 * PI * 28 = ~175.929; 50% dashoffset = 87.96 -->
-                <circle class="progress-ring-fill" cx="34" cy="34" r="28" stroke-dasharray="175.93" stroke-dashoffset="87.96"></circle>
+                <circle class="progress-ring-fill" cx="34" cy="34" r="28" stroke-dasharray="175.93"
+                  stroke-dashoffset="87.96"></circle>
               </svg>
               <span class="progress-ring-text">50%</span>
             </div>
@@ -103,7 +109,8 @@
           <div class="goal-card-footer">
             <div class="meta-group">
               <span class="meta-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                   <line x1="16" y1="2" x2="16" y2="6"></line>
                   <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -114,9 +121,11 @@
               <span class="badge-days">13 days left</span>
             </div>
 
-            <button type="button" class="expand-toggle-btn" data-toggle="goal-1-missions" aria-expanded="true" aria-controls="goal-1-missions">
+            <button type="button" class="expand-toggle-btn" data-toggle="goal-1-missions" aria-expanded="true"
+              aria-controls="goal-1-missions">
               <span>2 Missions</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
@@ -142,7 +151,8 @@
               <div class="mission-footer">
                 <div class="meta-group">
                   <span class="meta-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                       <line x1="16" y1="2" x2="16" y2="6"></line>
                       <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -153,9 +163,11 @@
                   <span class="badge-days warning">14 days left</span>
                 </div>
 
-                <button type="button" class="expand-toggle-btn" data-toggle="mission-1-actions" aria-expanded="true" aria-controls="mission-1-actions">
+                <button type="button" class="expand-toggle-btn" data-toggle="mission-1-actions" aria-expanded="true"
+                  aria-controls="mission-1-actions">
                   <span>3 Actions</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <polyline points="6 9 12 15 18 9"></polyline>
                   </svg>
                 </button>
@@ -163,13 +175,14 @@
 
               <!-- Actions Container nested under Mission 1 -->
               <div id="mission-1-actions" class="actions-container expandable expanded">
-                
+
                 <!-- Action 1: Completed -->
                 <div class="action-card">
                   <div class="action-info">
                     <h4 class="action-title">Pitch 5 potential clients</h4>
                     <span class="action-duration">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                       </svg>
@@ -178,7 +191,8 @@
                   </div>
                   <div class="action-status-group">
                     <span class="action-completed-pill">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                       <span>Completed</span>
@@ -191,7 +205,8 @@
                   <div class="action-info">
                     <h4 class="action-title">Deliver logo design project</h4>
                     <span class="action-duration">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                       </svg>
@@ -200,7 +215,8 @@
                   </div>
                   <div class="action-status-group">
                     <span class="action-completed-pill">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                       <span>Completed</span>
@@ -213,7 +229,8 @@
                   <div class="action-info">
                     <h4 class="action-title">Follow up on pending invoices</h4>
                     <span class="action-duration">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                       </svg>
@@ -245,7 +262,8 @@
               <div class="mission-footer">
                 <div class="meta-group">
                   <span class="meta-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                       <line x1="16" y1="2" x2="16" y2="6"></line>
                       <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -256,9 +274,11 @@
                   <span class="badge-days">21 days left</span>
                 </div>
 
-                <button type="button" class="expand-toggle-btn" data-toggle="mission-2-actions" aria-expanded="true" aria-controls="mission-2-actions">
+                <button type="button" class="expand-toggle-btn" data-toggle="mission-2-actions" aria-expanded="true"
+                  aria-controls="mission-2-actions">
                   <span>3 Actions</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <polyline points="6 9 12 15 18 9"></polyline>
                   </svg>
                 </button>
@@ -266,13 +286,14 @@
 
               <!-- Actions Container nested under Mission 2 -->
               <div id="mission-2-actions" class="actions-container expandable expanded">
-                
+
                 <!-- Action 1: Completed -->
                 <div class="action-card">
                   <div class="action-info">
                     <h4 class="action-title">List items on Facebook Marketplace</h4>
                     <span class="action-duration">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                       </svg>
@@ -281,7 +302,8 @@
                   </div>
                   <div class="action-status-group">
                     <span class="action-completed-pill">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                       <span>Completed</span>
@@ -294,7 +316,8 @@
                   <div class="action-info">
                     <h4 class="action-title">Sell old gadgets on Shopee</h4>
                     <span class="action-duration">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                       </svg>
@@ -311,7 +334,8 @@
                   <div class="action-info">
                     <h4 class="action-title">Meet up for buyer pickup/COD</h4>
                     <span class="action-duration">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                       </svg>
@@ -345,7 +369,8 @@
         <div class="activity-row" role="listitem">
           <div class="activity-left">
             <span class="activity-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
             </span>
@@ -359,7 +384,8 @@
         <div class="activity-row" role="listitem">
           <div class="activity-left">
             <span class="activity-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
             </span>
@@ -373,7 +399,8 @@
         <div class="activity-row" role="listitem">
           <div class="activity-left">
             <span class="activity-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
             </span>
@@ -424,7 +451,8 @@
               <span>Oct</span>
             </div>
             <p class="calendar-placeholder-text">Consistency Calendar Coming Soon</p>
-            <p class="calendar-placeholder-subtext">Action tracking will automatically populate day cells and intensity marks</p>
+            <p class="calendar-placeholder-subtext">Action tracking will automatically populate day cells and intensity
+              marks</p>
           </div>
         </div>
       </div>
@@ -433,4 +461,5 @@
   </main>
 
 </body>
+
 </html>
