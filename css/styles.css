@@ -1,0 +1,1143 @@
+/* ==========================================================================
+   Mr Goallie — Design System & Stylesheet
+   Strava-inspired athletic, data-forward dark UI
+   ========================================================================== */
+
+:root {
+  /* Colors */
+  --bg-color: #121212;
+  --surface-card: #1E1E1E;
+  --surface-nested: #181818;
+  --surface-nested-subtle: #242424;
+  --surface-input: #161616;
+  --surface-hover: #262626;
+
+  --color-primary: #FC4C02;
+  --color-primary-accent: #E34234;
+  --color-primary-glow: rgba(252, 76, 2, 0.25);
+  
+  --color-text-primary: #F5F5F5;
+  --color-text-muted: #9CA3AF;
+  --color-border: #333333;
+  --color-border-subtle: #282828;
+  --color-warning: #FFB020;
+  --color-warning-bg: rgba(255, 176, 32, 0.12);
+  --color-success: #FC4C02;
+  --color-success-bg: rgba(252, 76, 2, 0.12);
+
+  /* Typography */
+  --font-stack: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-full: 999px;
+
+  /* Elevation */
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --focus-ring: 0 0 0 2px #121212, 0 0 0 4px #FC4C02;
+}
+
+/* --------------------------------------------------------------------------
+   Modern Reset & Base Styles
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--color-text-primary);
+  font-family: var(--font-stack);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Accessible hidden utility */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Header & Sticky Nav Bar (~64px)
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 64px;
+  background-color: #121212;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  list-style: none;
+}
+
+.nav-link {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: var(--space-2) 0;
+  position: relative;
+  transition: color 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-text-primary);
+}
+
+.nav-link.active {
+  color: var(--color-text-primary);
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+.profile-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background-color: var(--surface-nested-subtle);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.profile-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Layout & Dashboard Container
+   -------------------------------------------------------------------------- */
+.main-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* Section Header Typography */
+.section-tag {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.section-title {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Goal Collection Section & Filters
+   -------------------------------------------------------------------------- */
+.goals-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.section-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-actions-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.category-select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.category-select {
+  background-color: var(--surface-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: 8px var(--space-6) 8px var(--space-3);
+  border-radius: var(--radius-sm);
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.category-select:focus {
+  border-color: var(--color-primary);
+}
+
+/* Primary Button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  padding: 8px var(--space-4);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-accent);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Goals Grid */
+.goals-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+/* --------------------------------------------------------------------------
+   Card Hierarchy: Goal -> Mission -> Action
+   Decreasing card size, padding, weight and indented connecting line
+   -------------------------------------------------------------------------- */
+
+/* 1. Goal Card (Largest) */
+.goal-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+}
+
+.goal-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.goal-title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.goal-title {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+/* Category Pill */
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px var(--space-3);
+  border-radius: var(--radius-full);
+  background-color: rgba(252, 76, 2, 0.15);
+  color: var(--color-primary);
+  border: 1px solid rgba(252, 76, 2, 0.3);
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.icon-btn:hover {
+  color: var(--color-text-primary);
+  background-color: var(--surface-hover);
+}
+
+/* Goal Card Middle */
+.goal-card-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.goal-description {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 650px;
+}
+
+/* Circular Progress Ring */
+.progress-ring-container {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-ring-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-ring-track {
+  fill: none;
+  stroke: var(--surface-nested-subtle);
+  stroke-width: 6;
+}
+
+.progress-ring-fill {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.4s ease;
+}
+
+.progress-ring-text {
+  position: absolute;
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+/* Goal Card Bottom Meta & Toggles */
+.goal-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.meta-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.badge-days {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface-nested-subtle);
+  color: var(--color-text-muted);
+}
+
+.badge-days.warning {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+  border: 1px solid rgba(255, 176, 32, 0.3);
+}
+
+.expand-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-primary);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.15s ease;
+}
+
+.expand-toggle-btn:hover {
+  background-color: rgba(252, 76, 2, 0.1);
+}
+
+.expand-toggle-btn svg {
+  transition: transform 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Expandable Container & Nested Missions
+   -------------------------------------------------------------------------- */
+.expandable {
+  display: none;
+}
+
+.expandable.expanded {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Missions container nested under Goal Card */
+.missions-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-left: var(--space-4);
+  margin-top: var(--space-3);
+  border-left: 2px solid var(--color-border);
+}
+
+/* 2. Mission Card (Medium) */
+.mission-card {
+  background-color: var(--surface-nested);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+.mission-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.mission-title {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.2px;
+}
+
+/* Linear Progress Bar with % Label */
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.progress-track {
+  flex: 1;
+  height: 8px;
+  background-color: var(--surface-nested-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-accent));
+  border-radius: var(--radius-full);
+}
+
+.progress-percent-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  min-width: 32px;
+  text-align: right;
+}
+
+.mission-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   Actions Container & Action Cards (Smallest/Most Compact)
+   -------------------------------------------------------------------------- */
+.actions-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-left: var(--space-4);
+  margin-top: var(--space-2);
+  border-left: 2px solid var(--color-border);
+}
+
+/* 3. Action Card */
+.action-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.action-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+  min-width: 0;
+}
+
+.action-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.action-duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.action-status-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.btn-start-action {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background-color 0.15s ease;
+}
+
+.btn-start-action:hover {
+  background-color: var(--color-primary-accent);
+}
+
+.action-completed-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-primary);
+  background-color: var(--color-success-bg);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(252, 76, 2, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   Action Collection / Activity Log Section
+   -------------------------------------------------------------------------- */
+.activity-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.activity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: background-color 0.1s ease;
+}
+
+.activity-row:last-child {
+  border-bottom: none;
+}
+
+.activity-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.activity-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-success-bg);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.activity-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activity-duration-badge {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  background-color: var(--surface-nested-subtle);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.activity-date {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  font-weight: 500;
+  text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   Consistency Calendar (Placeholder Frame & Legend)
+   -------------------------------------------------------------------------- */
+.calendar-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.calendar-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.calendar-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.calendar-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.legend-scale {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.legend-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.intensity-0 { background-color: #121212; border: 1px solid #333333; }
+.intensity-1 { background-color: rgba(252, 76, 2, 0.35); }
+.intensity-2 { background-color: rgba(252, 76, 2, 0.7); }
+.intensity-3 { background-color: #FC4C02; }
+
+.calendar-placeholder-container {
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+}
+
+.calendar-placeholder-frame {
+  min-width: 680px;
+  min-height: 140px;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.calendar-placeholder-text {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.5px;
+}
+
+.calendar-placeholder-subtext {
+  font-size: var(--text-xs);
+  color: #6B7280;
+}
+
+.calendar-months-mock {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 640px;
+  padding: 0 var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Goal Form Page: goalForm.html
+   Google Forms style single-column centered card layout
+   -------------------------------------------------------------------------- */
+.form-page-layout {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.form-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--color-border);
+  border-top: 6px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.form-header {
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: var(--space-4);
+}
+
+.form-header .section-title {
+  margin-top: var(--space-1);
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.form-nested-section {
+  background-color: var(--surface-nested);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  margin-top: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+}
+
+.form-nested-sub-section {
+  background-color: var(--surface-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  margin-top: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.nested-section-title {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.form-group-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.form-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.form-label-optional {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: normal;
+  margin-left: var(--space-1);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  background-color: var(--surface-input);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px var(--space-3);
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.btn-add-repeater {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px dashed rgba(252, 76, 2, 0.5);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-add-repeater:hover {
+  background-color: rgba(252, 76, 2, 0.1);
+  border-color: var(--color-primary);
+}
+
+.form-actions-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.btn-cancel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  padding: 10px var(--space-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-cancel:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-text-muted);
+}
+
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  padding: 10px var(--space-6);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 6px rgba(252, 76, 2, 0.3);
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-submit:hover {
+  background-color: var(--color-primary-accent);
+}
+
+.btn-submit:active {
+  transform: scale(0.98);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Behavior
+   - Desktop >=1024px: multi-column goal grid
+   - Tablet 640-1023px: single/double column
+   - Mobile <640px: single column, collapsed nav, full-width cards
+   -------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .goals-grid {
+    grid-template-columns: 1fr; /* Single detailed tree layout for goal cards with missions */
+  }
+}
+
+@media (max-width: 639px) {
+  .site-header {
+    height: 56px;
+  }
+
+  .main-layout {
+    padding: var(--space-4) var(--space-3);
+    gap: var(--space-6);
+  }
+
+  .nav-right {
+    gap: var(--space-3);
+  }
+
+  .nav-links {
+    gap: var(--space-3);
+  }
+
+  .nav-link {
+    font-size: var(--text-xs);
+  }
+
+  .goal-card {
+    padding: var(--space-4);
+  }
+
+  .goal-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .goal-card-body {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .progress-ring-container {
+    align-self: center;
+  }
+
+  .missions-container,
+  .actions-container {
+    padding-left: var(--space-2);
+  }
+
+  .action-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .action-status-group {
+    align-self: flex-end;
+  }
+
+  .form-group-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-card {
+    padding: var(--space-4);
+  }
+}
+
+/* ===================================================
+   MOCKUP-ONLY STYLES — remove this block along with
+   the mock Goal Card in index.html when no longer needed
+   =================================================== */
+.mock-data {
+  /* Targeted mockup styling if needed */
+}
+/* =================================================== */

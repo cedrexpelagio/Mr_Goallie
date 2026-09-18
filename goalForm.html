@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Goal — Mr Goallie</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo" aria-label="Mr Goallie Home">
+        Mr <span class="brand-gradient">Goallie</span>
+      </a>
+
+      <div class="nav-right">
+        <nav aria-label="Primary Navigation">
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Goals</a></li>
+            <li><a href="index.html#activity-section" class="nav-link">Activity</a></li>
+          </ul>
+        </nav>
+        <a href="#profile" class="profile-btn" aria-label="User Profile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="form-page-layout">
+
+    <div class="form-card">
+      <div class="form-header">
+        <span class="section-tag">Planning &amp; Execution</span>
+        <h1 class="section-title">Create New Goal</h1>
+        <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-top: 4px;">
+          Define your overarching objective, break it into missions, and schedule concrete actions.
+        </p>
+      </div>
+
+      <form action="index.html" method="get" class="form-section">
+        
+        <!-- 1. Goal Details Section -->
+        <fieldset class="form-section" style="border: none;">
+          <legend class="section-tag" style="margin-bottom: var(--space-2);">1. Goal Details</legend>
+
+          <div class="form-group">
+            <label for="goal-title" class="form-label">Goal Title</label>
+            <input 
+              type="text" 
+              id="goal-title" 
+              name="goal_title" 
+              class="form-input" 
+              placeholder="e.g. Earn ₱10K This Month" 
+              required
+            >
+          </div>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label for="goal-category" class="form-label">Category</label>
+              <select id="goal-category" name="goal_category" class="form-select" required>
+                <option value="" disabled selected>Select category...</option>
+                <option value="health">Health</option>
+                <option value="career">Career</option>
+                <option value="finance">Finance</option>
+                <option value="learning">Learning</option>
+                <option value="personal">Personal</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="goal-deadline" class="form-label">Deadline</label>
+              <input 
+                type="date" 
+                id="goal-deadline" 
+                name="goal_deadline" 
+                class="form-input" 
+                required
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="goal-description" class="form-label">
+              Description <span class="form-label-optional">(Optional)</span>
+            </label>
+            <textarea 
+              id="goal-description" 
+              name="goal_description" 
+              class="form-textarea" 
+              rows="3" 
+              placeholder="What does success look like? Any key milestones or motivation?"
+            ></textarea>
+          </div>
+
+          <!-- 2. Nested Mission Details Section -->
+          <div class="form-nested-section">
+            <div class="nested-section-title">
+              <span>2. Mission Details</span>
+              <span class="category-pill">Sub-objective</span>
+            </div>
+
+            <div class="form-group">
+              <label for="mission-title" class="form-label">Mission Title</label>
+              <input 
+                type="text" 
+                id="mission-title" 
+                name="mission_title" 
+                class="form-input" 
+                placeholder="e.g. Freelance Gigs — ₱6,000" 
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="mission-deadline" class="form-label">Mission Deadline</label>
+              <input 
+                type="date" 
+                id="mission-deadline" 
+                name="mission_deadline" 
+                class="form-input" 
+                required
+              >
+            </div>
+
+            <!-- 3. Nested Action Details Section -->
+            <div class="form-nested-sub-section">
+              <div class="nested-section-title">
+                <span style="font-size: var(--text-sm);">3. Action Details</span>
+                <span style="font-size: var(--text-xs); color: var(--color-text-muted);">Smallest Executable Unit</span>
+              </div>
+
+              <div class="form-group">
+                <label for="action-title" class="form-label">Action Title</label>
+                <input 
+                  type="text" 
+                  id="action-title" 
+                  name="action_title" 
+                  class="form-input" 
+                  placeholder="e.g. Deliver logo design project" 
+                  required
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="action-duration" class="form-label">Duration (in hours)</label>
+                <input 
+                  type="number" 
+                  id="action-duration" 
+                  name="action_duration" 
+                  class="form-input" 
+                  placeholder="e.g. 6" 
+                  min="0.25" 
+                  step="0.25" 
+                  required
+                >
+              </div>
+
+              <button type="button" class="btn-add-repeater">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>+ Add another Action</span>
+              </button>
+            </div>
+
+            <button type="button" class="btn-add-repeater">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>+ Add another Mission</span>
+            </button>
+          </div>
+
+        </fieldset>
+
+        <!-- Form Footer: Cancel & Save Goal -->
+        <div class="form-actions-footer">
+          <a href="index.html" class="btn-cancel">Cancel</a>
+          <button type="submit" class="btn-submit">Save Goal</button>
+        </div>
+
+      </form>
+    </div>
+
+  </main>
+
+</body>
+</html>
