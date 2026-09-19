@@ -217,6 +217,77 @@ button {
   color: var(--color-text-primary);
 }
 
+
+/* Hamburger Button */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: var(--surface-card);
+  border: none;
+  box-sizing: content-box;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--card-shadow);
+}
+
+.hamburger-btn .bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: 4px;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
+  box-shadow: var(--card-shadow);
+  background-color: var(--surface-card);
+  padding: var(--space-4);
+  z-index: 1000;
+  display: none;
+}
+
+.side-nav-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: var(--space-1) var(--space-8);
+}
+
+.nav-links.side {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.close-btn {
+  align-self: flex-end;
+  width: 30px;
+  height: 30px;
+  stroke: var(--color-primary);
+  border: none;
+}
+
+.profile-btn-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.profile-btn-side .profile-btn {
+  width: 50px;
+  height: 50px;
+}
+
 /* --------------------------------------------------------------------------
    Layout & Dashboard Container
    -------------------------------------------------------------------------- */
@@ -1168,7 +1239,7 @@ button {
   }
 
   .nav-right {
-    gap: var(--space-3);
+    display: none;
   }
 
   .nav-links {
@@ -1177,6 +1248,10 @@ button {
 
   .nav-link {
     font-size: var(--text-xs);
+  }
+
+  .hamburger-btn {
+    display: flex;
   }
 
   .goal-card {
