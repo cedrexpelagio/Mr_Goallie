@@ -252,13 +252,12 @@ button {
   background-color: var(--surface-card);
   padding: var(--space-4);
   z-index: 1000;
-  display: none;
 }
 
 .side-nav-panel {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--space-8);
   padding: var(--space-1) var(--space-8);
 }
 
@@ -1243,10 +1242,15 @@ button {
   }
 
   .nav-links {
-    gap: var(--space-3);
+    gap: var(--space-6);
   }
 
   .nav-link {
+    font-size: var(--text-base);
+  }
+
+
+  .profile-btn-side .nav-link {
     font-size: var(--text-xs);
   }
 
