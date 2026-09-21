@@ -7,12 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const goalDeadline = document.getElementById('goal-deadline');
     const goalDescription = document.getElementById('goal-description');
 
-    const missionTitle = document.getElementById('mission-title');
-    const missionDeadline = document.getElementById('mission-deadline');
-
-    const actionTitle = document.getElementById('action-title');
-    const actionDuration = document.getElementById('action-duration');
-
     const innerGoalForm = goalForm.querySelector('.form-section');
 
     const goals = [];
@@ -182,10 +176,6 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
 
         function GoalModel(title, deadline) {
-            if (!new.target) {
-                console.log("You forgot the 'new' operator buddy");
-            }
-
             this.title = title;
             this.deadline = deadline;
         }
@@ -224,11 +214,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const goal = new Goal(goalTitle.value, goalCategory.value, goalDeadline.value, goalDescription.value);
-        const mission = new Mission(missionTitle.value, missionDeadline.value);
-        const action = new Action(actionTitle.value, actionDuration.value);
 
-        console.log(goal);
-        console.log(mission);
-        console.log(action);
+        addMissions(goal.missions, Mission, Action);
+
+        goals.push(goal);
+
+        console.log(goals);
     });
 });
