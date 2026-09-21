@@ -43,8 +43,8 @@
           Define your overarching objective, break it into missions, and schedule concrete actions.
         </p>
       </div>
-
-      <form action="index.html" method="get" class="form-section">
+<!-- action="index.html" method="get" -->
+      <form class="form-section">
         
         <!-- 1. Goal Details Section -->
         <fieldset class="form-section" style="border: none;">
@@ -101,7 +101,7 @@
           </div>
 
           <!-- 2. Nested Mission Details Section -->
-          <div class="form-nested-section">
+          <div class="form-nested-section" data-mission-index="0">
             <div class="nested-section-title">
               <span>2. Mission Details</span>
               <span class="category-pill">Sub-objective</span>
@@ -172,7 +172,7 @@
               </button>
             </div>
 
-            <button type="button" class="btn-add-repeater">
+            <button type="button" class="btn-add-repeater btn-add-mission">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -215,6 +215,8 @@
       </div>
     </div>
   </footer>
+
+   <script src="./javascript/goalForm.js"></script>
 
 </body>
 </html>
