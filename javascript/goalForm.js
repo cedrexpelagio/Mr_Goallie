@@ -17,6 +17,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const goals = [];
 
+    function createActionForm(newMissionForm) {
+        const missionIndex = newMissionForm.dataset.missionIndex;
+        const actionCount = newMissionForm.querySelectorAll('.action-form').length;
+        const newActionForm = newMissionForm.querySelector('.form-nested-sub-section');
+
+        const newAction = document.createElement('div');
+        newAction.classList.add('action-form');
+
+        newAction.innerHTML = `
+       <div class="nested-section-title">
+         <span style="font-size: var(--text-sm);">3. Action Details</span>
+         <span style="font-size: var(--text-xs); color: var(--color-text-muted);">Smallest Executable Unit</span>
+       </div>
+
+       <div class="form-group">
+         <label for="action-title-${missionIndex}-${actionCount}" class="form-label">Action Title</label>
+         <input 
+           type="text" 
+           id="action-title-${missionIndex}-${actionCount}" 
+           name="action_title" 
+           class="form-input" 
+           placeholder="e.g. Deliver logo design project" 
+           required
+         >
+       </div>
+
+       <div class="form-group">
+         <label for="action-duration-${missionIndex}-${actionCount}" class="form-label">Duration (in hours)</label>
+         <input 
+           type="number" 
+           id="action-duration-${missionIndex}-${actionCount}" 
+           name="action_duration" 
+           class="form-input" 
+           placeholder="e.g. 6" 
+           min="0.25" 
+           step="0.25" 
+           required
+         >
+       </div>
+
+       <button type="button" class="btn-add-repeater btn-add-action">
+         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+           <line x1="12" y1="5" x2="12" y2="19"></line>
+           <line x1="5" y1="12" x2="19" y2="12"></line>
+         </svg>
+         <span>+ Add another Action</span>
+       </button>`;
+
+        newActionForm.appendChild(newAction);
+
+        const addActionBtn = newAction.querySelector('.btn-add-action');
+
+        addActionBtn.addEventListener('click', () => {
+            createActionForm(newMissionForm);
+            addActionBtn.remove();
+        });
+
+    }
+
     function createMissionForm() {
         const missionCount = innerGoalForm.querySelectorAll('.form-nested-section').length;
 
@@ -55,44 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <!-- 3. Nested Action Details Section -->
         <div class="form-nested-sub-section">
-          <div class="nested-section-title">
-            <span style="font-size: var(--text-sm);">3. Action Details</span>
-            <span style="font-size: var(--text-xs); color: var(--color-text-muted);">Smallest Executable Unit</span>
-          </div>
-
-          <div class="form-group">
-            <label for="action-title-${missionCount}" class="form-label">Action Title</label>
-            <input 
-              type="text" 
-              id="action-title-${missionCount}" 
-              name="action_title" 
-              class="form-input" 
-              placeholder="e.g. Deliver logo design project" 
-              required
-            >
-          </div>
-
-          <div class="form-group">
-            <label for="action-duration-${missionCount}" class="form-label">Duration (in hours)</label>
-            <input 
-              type="number" 
-              id="action-duration-${missionCount}" 
-              name="action_duration" 
-              class="form-input" 
-              placeholder="e.g. 6" 
-              min="0.25" 
-              step="0.25" 
-              required
-            >
-          </div>
-
-          <button type="button" class="btn-add-repeater">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-            </svg>
-            <span>+ Add another Action</span>
-          </button>
+          
         </div>
 
         <button type="button" class="btn-add-repeater btn-add-mission">
@@ -107,12 +129,14 @@ document.addEventListener("DOMContentLoaded", () => {
         innerGoalForm.appendChild(newMissionForm);
 
         const addMissionBtn = newMissionForm.querySelector('.btn-add-mission');
+
         addMissionBtn.addEventListener('click', () => {
             createMissionForm();
             addMissionBtn.remove();
         });
 
-        console.log(newMissionForm);
+        createActionForm(newMissionForm);
+
     };
 
     createMissionForm();
