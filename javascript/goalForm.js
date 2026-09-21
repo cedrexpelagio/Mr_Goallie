@@ -17,6 +17,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const goals = [];
 
+    function addActions(actionsArray, Action, missionIndex) {
+        const actionCount = innerGoalForm.querySelectorAll('.action-form').length;
+
+        for (let index = 0; index < actionCount; index++) {
+
+            const actionTitle = document.getElementById(`action-title-${missionIndex}-${index}`);
+            const actionDuration = document.getElementById(`action-duration-${missionIndex}-${index}`);
+
+            const action = new Action(actionTitle.value, actionDuration.value);
+
+            actionsArray.push(action);
+        }
+
+    }
+
+    function addMissions(missionsArray, Mission, Action) {
+        const missionCount = innerGoalForm.querySelectorAll('.form-nested-section').length;
+
+        for (let index = 0; index < missionCount; index++) {
+
+            const missionTitle = document.getElementById(`mission-title-${index}`);
+            const missionDeadline = document.getElementById(`mission-deadline-${index}`);
+
+            const mission = new Mission(missionTitle.value, missionDeadline.value);
+
+            addActions(mission.actions, Action, index);
+
+            missionsArray.push(mission);
+        }
+    }
+
     function createActionForm(newMissionForm) {
         const missionIndex = newMissionForm.dataset.missionIndex;
         const actionCount = newMissionForm.querySelectorAll('.action-form').length;
