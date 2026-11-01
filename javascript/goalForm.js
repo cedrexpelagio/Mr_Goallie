@@ -1,4 +1,4 @@
-import { Goal, Mission, Action } from "./goalModel.js";
+import { Goal, Mission, Action } from "./modules/goalModel.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
