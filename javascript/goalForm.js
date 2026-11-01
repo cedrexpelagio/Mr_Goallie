@@ -19,9 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const actionTitle = document.getElementById(`action-title-${missionIndex}-${index}`);
             const actionDuration = document.getElementById(`action-duration-${missionIndex}-${index}`);
 
-            const action = new Action(actionTitle.value, actionDuration.value);
-
-            actionsArray.push(action);
+            if (actionTitle && actionDuration) {
+                const action = new Action(actionTitle.value, actionDuration.value);
+                actionsArray.push(action);
+            }
         }
 
     }
@@ -36,9 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const mission = new Mission(missionTitle.value, missionDeadline.value);
 
-            addActions(mission.actions, Action, index);
-
-            missionsArray.push(mission);
+            if (missionTitle && missionDeadline) {
+                addActions(mission.actions, Action, index);
+                missionsArray.push(mission);
+            }
         }
     }
 
@@ -93,6 +95,12 @@ document.addEventListener("DOMContentLoaded", () => {
         newActionForm.appendChild(newAction);
 
         const addActionBtn = newAction.querySelector('.btn-add-action');
+
+        const actionTitle = document.getElementById(`action-title-${missionIndex}-${actionCount}`);
+        const actionDuration = document.getElementById(`action-duration-${missionIndex}-${actionCount}`);
+
+        actionTitle.value = "Try";
+        actionDuration.value = 10;
 
         addActionBtn.addEventListener('click', () => {
             createActionForm(newMissionForm);
@@ -154,6 +162,12 @@ document.addEventListener("DOMContentLoaded", () => {
         innerGoalForm.appendChild(newMissionForm);
 
         const addMissionBtn = newMissionForm.querySelector('.btn-add-mission');
+
+         const missionTitle = document.getElementById(`mission-title-${missionCount}`);
+            const missionDeadline = document.getElementById(`mission-deadline-${missionCount}`);
+
+            missionTitle.value = "Try"
+            missionDeadline.value = "2026-04-30";
 
         addMissionBtn.addEventListener('click', () => {
             createMissionForm();

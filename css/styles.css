@@ -246,7 +246,7 @@ button {
   position: fixed;
   top: 0;
   right: 0;
-  width: 50vw;
+  width: 65vw;
   height: 100vh;
   box-shadow: var(--card-shadow);
   background-color: var(--surface-card);
