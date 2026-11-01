@@ -1,58 +1,62 @@
+import { Goal, Mission, Action } from "./goalModel.js";
+
+
 document.addEventListener("DOMContentLoaded", () => {
-    const goalForm = document.querySelector('.form-section');
 
-    // Goal Structure
-    const goalTitle = document.getElementById('goal-title');
-    const goalCategory = document.getElementById('goal-category');
-    const goalDeadline = document.getElementById('goal-deadline');
-    const goalDescription = document.getElementById('goal-description');
+  const goalForm = document.querySelector('.form-section');
 
-    const innerGoalForm = goalForm.querySelector('.form-section');
+  // Goal Structure
+  const goalTitle = document.getElementById('goal-title');
+  const goalCategory = document.getElementById('goal-category');
+  const goalDeadline = document.getElementById('goal-deadline');
+  const goalDescription = document.getElementById('goal-description');
 
-    const goals = [];
+  const innerGoalForm = goalForm.querySelector('.form-section');
 
-    function addActions(actionsArray, Action, missionIndex) {
-        const actionCount = innerGoalForm.querySelectorAll('.action-form').length;
+  const goals = [];
 
-        for (let index = 0; index < actionCount; index++) {
+  function addActions(actionsArray, Action, missionIndex) {
+    const actionCount = innerGoalForm.querySelectorAll('.action-form').length;
 
-            const actionTitle = document.getElementById(`action-title-${missionIndex}-${index}`);
-            const actionDuration = document.getElementById(`action-duration-${missionIndex}-${index}`);
+    for (let index = 0; index < actionCount; index++) {
 
-            if (actionTitle && actionDuration) {
-                const action = new Action(actionTitle.value, actionDuration.value);
-                actionsArray.push(action);
-            }
-        }
+      const actionTitle = document.getElementById(`action-title-${missionIndex}-${index}`);
+      const actionDuration = document.getElementById(`action-duration-${missionIndex}-${index}`);
 
+      if (actionTitle && actionDuration) {
+        const action = new Action(actionTitle.value, actionDuration.value);
+        actionsArray.push(action);
+      }
     }
 
-    function addMissions(missionsArray, Mission, Action) {
-        const missionCount = innerGoalForm.querySelectorAll('.form-nested-section').length;
+  }
 
-        for (let index = 0; index < missionCount; index++) {
+  function addMissions(missionsArray, Mission, Action) {
+    const missionCount = innerGoalForm.querySelectorAll('.form-nested-section').length;
 
-            const missionTitle = document.getElementById(`mission-title-${index}`);
-            const missionDeadline = document.getElementById(`mission-deadline-${index}`);
+    for (let index = 0; index < missionCount; index++) {
 
-            const mission = new Mission(missionTitle.value, missionDeadline.value);
+      const missionTitle = document.getElementById(`mission-title-${index}`);
+      const missionDeadline = document.getElementById(`mission-deadline-${index}`);
 
-            if (missionTitle && missionDeadline) {
-                addActions(mission.actions, Action, index);
-                missionsArray.push(mission);
-            }
-        }
+      const mission = new Mission(missionTitle.value, missionDeadline.value);
+
+      if (missionTitle && missionDeadline) {
+        addActions(mission.actions, Action, index);
+        missionsArray.push(mission);
+      }
     }
+  }
 
-    function createActionForm(newMissionForm) {
-        const missionIndex = newMissionForm.dataset.missionIndex;
-        const actionCount = newMissionForm.querySelectorAll('.action-form').length;
-        const newActionForm = newMissionForm.querySelector('.form-nested-sub-section');
+  function createActionForm(newMissionForm) {
+    const missionIndex = newMissionForm.dataset.missionIndex;
+    const actionCount = newMissionForm.querySelectorAll('.action-form').length;
+    const newActionForm = newMissionForm.querySelector('.form-nested-sub-section');
 
-        const newAction = document.createElement('div');
-        newAction.classList.add('action-form');
+    const newAction = document.createElement('div');
+    newAction.classList.add('action-form');
 
-        newAction.innerHTML = `
+    newAction.innerHTML = `
        <div class="nested-section-title">
          <span style="font-size: var(--text-sm);">3. Action Details</span>
          <span style="font-size: var(--text-xs); color: var(--color-text-muted);">Smallest Executable Unit</span>
@@ -92,31 +96,31 @@ document.addEventListener("DOMContentLoaded", () => {
          <span>+ Add another Action</span>
        </button>`;
 
-        newActionForm.appendChild(newAction);
+    newActionForm.appendChild(newAction);
 
-        const addActionBtn = newAction.querySelector('.btn-add-action');
+    const addActionBtn = newAction.querySelector('.btn-add-action');
 
-        const actionTitle = document.getElementById(`action-title-${missionIndex}-${actionCount}`);
-        const actionDuration = document.getElementById(`action-duration-${missionIndex}-${actionCount}`);
+    const actionTitle = document.getElementById(`action-title-${missionIndex}-${actionCount}`);
+    const actionDuration = document.getElementById(`action-duration-${missionIndex}-${actionCount}`);
 
-        actionTitle.value = "Try";
-        actionDuration.value = 10;
+    actionTitle.value = "Try";
+    actionDuration.value = 10;
 
-        addActionBtn.addEventListener('click', () => {
-            createActionForm(newMissionForm);
-            addActionBtn.remove();
-        });
+    addActionBtn.addEventListener('click', () => {
+      createActionForm(newMissionForm);
+      addActionBtn.remove();
+    });
 
-    }
+  }
 
-    function createMissionForm() {
-        const missionCount = innerGoalForm.querySelectorAll('.form-nested-section').length;
+  function createMissionForm() {
+    const missionCount = innerGoalForm.querySelectorAll('.form-nested-section').length;
 
-        const newMissionForm = document.createElement('div');
-        newMissionForm.classList.add('form-nested-section');
-        newMissionForm.dataset.missionIndex = missionCount;
+    const newMissionForm = document.createElement('div');
+    newMissionForm.classList.add('form-nested-section');
+    newMissionForm.dataset.missionIndex = missionCount;
 
-        newMissionForm.innerHTML = `
+    newMissionForm.innerHTML = `
         <div class="nested-section-title">
           <span>2. Mission Details</span>
           <span class="category-pill">Sub-objective</span>
@@ -159,80 +163,47 @@ document.addEventListener("DOMContentLoaded", () => {
         </button>
     `;
 
-        innerGoalForm.appendChild(newMissionForm);
+    innerGoalForm.appendChild(newMissionForm);
 
-        const addMissionBtn = newMissionForm.querySelector('.btn-add-mission');
+    const addMissionBtn = newMissionForm.querySelector('.btn-add-mission');
 
-         const missionTitle = document.getElementById(`mission-title-${missionCount}`);
-            const missionDeadline = document.getElementById(`mission-deadline-${missionCount}`);
+    const missionTitle = document.getElementById(`mission-title-${missionCount}`);
+    const missionDeadline = document.getElementById(`mission-deadline-${missionCount}`);
 
-            missionTitle.value = "Try"
-            missionDeadline.value = "2026-04-30";
+    missionTitle.value = "Try"
+    missionDeadline.value = "2026-04-30";
 
-        addMissionBtn.addEventListener('click', () => {
-            createMissionForm();
-            addMissionBtn.remove();
-        });
-
-        createActionForm(newMissionForm);
-
-    };
-
-    createMissionForm();
-
-    // 1. Goal Details Mockup
-    goalTitle.value = "Earn ₱10K This Month";
-    goalCategory.value = "finance";
-    goalDeadline.value = "2026-04-30";
-    goalDescription.value = "Complete side hustles and freelance projects to hit the monthly savings milestone.";
-
-    goalForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        function GoalModel(title, deadline) {
-            this.title = title;
-            this.deadline = deadline;
-        }
-
-        function Goal(title, category, deadline, description) {
-
-            if (!new.target) {
-                console.log("You forgot the 'new' operator buddy");
-            }
-
-            GoalModel.call(this, title, deadline);
-            this.category = category;
-            this.description = description;
-            this.missions = [];
-        }
-
-        function Mission(title, deadline) {
-            if (!new.target) {
-                console.log("You forgot the 'new' operator buddy");
-            }
-
-            GoalModel.call(this, title, deadline);
-            this.actions = [];
-        }
-
-        Object.setPrototypeOf(Goal.prototype, GoalModel.prototype);
-        Object.setPrototypeOf(Mission.prototype, GoalModel.prototype);
-
-        function Action(title, duration) {
-            if (!new.target) {
-                console.log("You forgot the 'new' operator buddy");
-            }
-
-            this.title = title;
-            this.duration = duration;
-        }
-
-        const goal = new Goal(goalTitle.value, goalCategory.value, goalDeadline.value, goalDescription.value);
-
-        addMissions(goal.missions, Mission, Action);
-
-        goals.push(goal);
-
-        console.log(goals);
+    addMissionBtn.addEventListener('click', () => {
+      createMissionForm();
+      addMissionBtn.remove();
     });
+
+    createActionForm(newMissionForm);
+
+  };
+
+  createMissionForm();
+
+  // 1. Goal Details Mockup
+  goalTitle.value = "Earn ₱10K This Month";
+  goalCategory.value = "finance";
+  goalDeadline.value = "2026-04-30";
+  goalDescription.value = "Complete side hustles and freelance projects to hit the monthly savings milestone.";
+
+  goalForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const goal = new Goal(
+      goalTitle.value,
+      goalCategory.value,
+      goalDeadline.value,
+      goalDescription.value
+    );
+
+    addMissions(goal.missions, Mission, Action);
+
+    goals.push(goal);
+
+    console.log(goals);
+  });
 });
